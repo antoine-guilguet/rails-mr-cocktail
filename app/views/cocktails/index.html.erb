@@ -1,0 +1,15 @@
+<h1>List of Cocktails</h1>
+<ul>
+  <% @cocktails.each do |cocktail| %>
+    <li>
+      <%= cocktail.name  %>
+      <%= link_to 'Show Recipe', cocktail_path(cocktail) %>
+      <%= link_to 'Edit', edit_cocktail_path(cocktail) %>
+      <%= link_to "Delete", cocktail_path(cocktail),
+      method: :delete,
+      data: { confirm: "Are you sure?" } %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to 'Add a Cocktail', new_cocktail_path %>
