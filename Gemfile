@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.3.1'
 
+gem "simple_form"
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
 gem 'simple_form'
