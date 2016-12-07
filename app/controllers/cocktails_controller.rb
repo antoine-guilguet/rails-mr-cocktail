@@ -15,10 +15,16 @@ class CocktailsController < ApplicationController
 
   def create
     @cocktail = Cocktail.new(cocktail_params)
-    if @cocktail.save!
-      redirect_to cocktails_path
+    if @cocktail.save
+      respond_to do |format|
+        format.html { redirect_to cocktails_path }
+        format.js
+      end
     else
-      render 'new'
+      respond_to do |format|
+        format.html { render 'new' }
+        format.js
+      end
     end
   end
 

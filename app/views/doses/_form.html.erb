@@ -3,7 +3,7 @@
     <div class="col-sm-6 col-sm-offset-3">
     <h3 class="text-center">Define the Recipe of your Cocktail</h3>
 
-    <%= simple_form_for [@cocktail, @dose] do |f| %>
+    <%= simple_form_for([@cocktail, @dose], remote: true) do |f| %>
       <%= f.input :description, placeholder: "3cl, 2 slices..." %>
       <%= f.input :ingredient_id, collection: @ingredients %>
       <div class="form-action">

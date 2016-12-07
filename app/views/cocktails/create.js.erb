@@ -1,0 +1,15 @@
+<% if @cocktail.errors.any? %>
+  // Render new review form with errors
+  $('.modal-body-cocktail').html("<%= j render 'cocktails/form-cocktail', cocktail: @cocktail %>");
+  $('#cocktail-modal').modal('show')
+<% else %>
+  // Create a paragraph for the new review. But hide it.
+  var new_cocktail = $("<%= j render 'cocktails/show', cocktail: @cocktail %>").hide();
+  // Add it to the DOM, at the end of the existing reviews. It's still hidden.
+  $('#cocktails').prepend(new_cocktail);
+  // Show the new review with an animation!
+  new_cocktail.slideDown();
+  // Reset the form
+  $('.modal-body-cocktail').html("<%= j render 'cocktails/form-cocktail', cocktail: Cocktail.new %>");
+  $('#cocktail-modal').modal('hide')
+<% end %>

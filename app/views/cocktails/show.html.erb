@@ -1,19 +1,24 @@
-<h2><%= @cocktail.name %>'s Recipe: </h2>
-<ul>
-  <% @cocktail.doses.each do |dose| %>
-    <li>
-      <%= dose.description %> of <%= @ingredients.find(dose.ingredient_id).name %>
-    </li>
-  <% end %>
-</ul>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <h2><%= @cocktail.name %>'s Recipe: </h2>
+      <div id="doses-<%= @cocktail.id %>"></div>
+      <ul>
+        <% @cocktail.doses.each do |dose| %>
+          <%= render 'doses/show', dose: dose %>
+        <% end %>
+      </ul>
 
-<button type="button" id="dose-modal-button" class="btn btn-primary" data-toggle="modal" data-target="modal-dose">
-  Add a dose to your Cocktail
-</button>
+      <button type="button" id="dose-modal-button" class="btn btn-primary" data-toggle="modal" data-target="modal-dose">
+        Add a dose to your Cocktail
+      </button>
 
-<%= link_to 'Edit Cocktail', edit_cocktail_path(@cocktail), class:"btn btn-success" %>
-</br>
-<%= link_to 'Back', cocktails_path %>
+      <%= link_to 'Edit Cocktail', edit_cocktail_path(@cocktail), class:"btn btn-success" %>
+      </br>
+      <%= link_to 'Back', cocktails_path %>
+    </div>
+  </div>
+</div>
 
 <%= render 'modal-dose', cocktail: @cocktail, dose: Dose.new %>
 

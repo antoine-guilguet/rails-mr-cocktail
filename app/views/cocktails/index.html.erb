@@ -15,19 +15,11 @@
 
 <div class="card-container">
   <div class="row">
-    <% @cocktails.each do |cocktail| %>
-      <div class="col-sm-4 ">
-        <div class="card">
-          <h4> <%= cocktail.name  %> </h4>
-          <ul class="list-inline">
-            <li><%= link_to 'Show Recipe', cocktail_path(cocktail), class:"btn btn-success" %></li>
-            <li><%= link_to "Delete", cocktail_path(cocktail), class:"btn btn-warning",
-        method: :delete,
-        data: { confirm: "Are you sure?" } %></li>
-          </ul>
-        </div>
-      </div>
-    <% end %>
+    <div id="cocktails">
+      <% @cocktails.each do |cocktail| %>
+        <%= render 'cocktails/show', cocktail: cocktail %>
+      <% end %>
+    </div>
   </div>
 </div>
 <%= render 'modal-cocktail', cocktail: Cocktail.new %>
