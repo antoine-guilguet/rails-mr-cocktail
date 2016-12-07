@@ -1,13 +1,14 @@
-<h1>Edit your Cocktail</h1>
-<ul>
-  <% @doses.each do |dose| %>
-    <li><%= dose.description %></li>
-    <li><%= @ingredients.find(dose.ingredient_id).name %></li>
-  <% end %>
-</ul>
-
-</br>
-
-<%= link_to 'Add Dose', new_cocktail_dose_path(@cocktail.id), class: "btn btn-primary" %>
-</br>
-<%= link_to 'Back', cocktails_path, class: "btn btn-primary" %>
+<div class="form-container">
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      <%= simple_form_for(@cocktail) do |f| %>
+        <%= f.input :name, placeholder: "Cuba Libre" %>
+        <%= f.input :stars, collection: 1..5 %>
+        <div class="form-action">
+          <%= f.button :submit, class: "btn btn-primary" %>
+          <%= link_to 'Back', cocktails_path, class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

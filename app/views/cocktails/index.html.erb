@@ -1,15 +1,47 @@
-<h1>List of Cocktails</h1>
-<ul>
-  <% @cocktails.each do |cocktail| %>
-    <li>
-      <%= cocktail.name  %>
-      <%= link_to 'Show Recipe', cocktail_path(cocktail) %>
-      <%= link_to 'Edit', edit_cocktail_path(cocktail) %>
-      <%= link_to "Delete", cocktail_path(cocktail),
-      method: :delete,
-      data: { confirm: "Are you sure?" } %>
-    </li>
-  <% end %>
-</ul>
+<div class="banner">
+  <div class="container text-center">
+    <h1>List of Cocktails</h1>
+    <h3>Impress your friends with amazing Cocktails</h3>
+  </div>
+</div>
 
-<%= link_to 'Add a Cocktail', new_cocktail_path %>
+<div class="wrapper">
+  <div class="button-container text-center">
+    <button type="button" id="cocktail-modal-button" class="btn btn-primary" data-toggle="modal" data-target="cocktail-modal">
+      Create a Cocktail
+    </button>
+  </div>
+</div>
+
+<div class="card-container">
+  <div class="row">
+    <% @cocktails.each do |cocktail| %>
+      <div class="col-sm-4 ">
+        <div class="card">
+          <h4> <%= cocktail.name  %> </h4>
+          <ul class="list-inline">
+            <li><%= link_to 'Show Recipe', cocktail_path(cocktail), class:"btn btn-success" %></li>
+            <li><%= link_to "Delete", cocktail_path(cocktail), class:"btn btn-warning",
+        method: :delete,
+        data: { confirm: "Are you sure?" } %></li>
+          </ul>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+<%= render 'modal-cocktail', cocktail: Cocktail.new %>
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+      $('#cocktail-modal-button').on("click", function() {
+        $('#cocktail-modal').modal('show')
+      });
+    });
+  <% end %>
+<% end %>
+
+
+
+

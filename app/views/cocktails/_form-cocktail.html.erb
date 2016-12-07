@@ -1,0 +1,8 @@
+<%= simple_form_for(cocktail) do |f| %>
+  <%= f.input :name, placeholder: "Cuba Libre" %>
+  <%= f.input :stars, collection: 1..5 %>
+  <div class="form-action">
+    <%= f.button :submit, class: "btn btn-primary" %>
+  </div>
+<% end %>
+
