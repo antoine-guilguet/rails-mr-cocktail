@@ -1,0 +1,8 @@
+<% if @review.errors.any? %>
+  $('#new_review').html("<%= j render 'reviews/form-review', cocktail: @cocktail, review: @review %>");
+<% else %>
+  var new_review = $("<%= j render 'reviews/show', review: @review %>").hide();
+  $('#reviews-cocktail-<%= @cocktail.id %>').prepend(new_review);
+  new_review.slideDown();
+  $('#new_review').html("<%= j render 'reviews/form-review', cocktail: @cocktail, review: Review.new %>");
+<% end %>

@@ -7,6 +7,7 @@ class CocktailsController < ApplicationController
   end
 
   def show
+    @review = Review.new
   end
 
   def new
@@ -30,7 +31,6 @@ class CocktailsController < ApplicationController
 
   def edit
     @doses = @cocktail.doses
-    @ingredients = Ingredient.all
   end
 
   def update

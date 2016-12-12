@@ -9,10 +9,11 @@
         <% end %>
       </ul>
 
-      <button type="button" id="dose-modal-button" class="btn btn-primary" data-toggle="modal" data-target="modal-dose">
+      <button type="button" id="dose-modal-button" class="btn btn-primary" data-toggle="modal" data-target="dose-modal">
         Add a dose to your Cocktail
       </button>
 
+      <%= link_to 'Add a Review', new_cocktail_review_path(@cocktail), class: "btn btn-primary" %>
       <%= link_to 'Edit Cocktail', edit_cocktail_path(@cocktail), class:"btn btn-success" %>
       </br>
       <%= link_to 'Back', cocktails_path %>
@@ -21,6 +22,22 @@
 </div>
 
 <%= render 'modal-dose', cocktail: @cocktail, dose: Dose.new %>
+
+<div id="new_review">
+  <%= render 'reviews/form-review', cocktail: @cocktail, review: Review.new %>
+</div>
+
+<div id="reviews-cocktail-<%= @cocktail.id %>">
+  <% if @cocktail.reviews.blank? %>
+    <h6>Be the first to leave a review for <%= @cocktail.name %></h6>
+  <% else %>
+    <% @cocktail.reviews.each do |review| %>
+    <ul>
+      <%= render 'reviews/show', review: review %>
+    </ul>
+    <% end %>
+  <% end %>
+</div>
 
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>

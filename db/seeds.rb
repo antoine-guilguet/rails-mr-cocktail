@@ -12,6 +12,6 @@ end
 
 Cocktail.create(name:"Mojito", stars: 5)
 Cocktail.create(name:"Whisky Sour", stars: 4)
-Cocktail.creat(name:"Virgin Mojito", stars: 1)
+Cocktail.create(name:"Virgin Mojito", stars: 1)
 
 

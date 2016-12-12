@@ -10,6 +10,6 @@
   // Show the new review with an animation!
   new_dose.slideDown();
   // Reset the form
-  $('#modal-body-dose').html("<%= j render 'cocktails/form-dose', cocktail: @cocktail, dose: Dose.new %>");
+  $('.modal-body-dose').html("<%= j render 'cocktails/form-dose', cocktail: @cocktail, dose: Dose.new %>");
   $('#dose-modal').modal('hide')
 <% end %>

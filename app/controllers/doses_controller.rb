@@ -1,7 +1,7 @@
 class DosesController < ApplicationController
   before_action :set_cocktail
   before_action :set_dose, only: [:destroy, :edit, :update]
-  before_action :set_ingredients, only: [:edit, :new]
+  before_action :set_ingredients, only: [:edit, :new, :create]
 
   def new
     @dose = Dose.new
@@ -10,7 +10,7 @@ class DosesController < ApplicationController
   def create
     @dose = Dose.new(dose_params)
     @dose.cocktail_id = @cocktail.id
-    if @dose.save
+    if @dose.save!
       respond_to do |format|
         format.html { redirect_to cocktail_path(@cocktail) }
         format.js

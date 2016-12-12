@@ -1,0 +1,6 @@
+<%= simple_form_for([cocktail, review], remote: true) do |f| %>
+  <%= f.input :content, placeholder: "Very nice Cocktail!" %>
+  <div class="form-action">
+    <%= f.button :submit, class: "btn btn-primary" %>
+  </div>
+<% end %>
