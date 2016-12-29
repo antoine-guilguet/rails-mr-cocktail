@@ -1,0 +1,22 @@
+.btn {
+	border: solid 1px #6b1b1b;
+}
+
+.btn-primary {
+	color: #6b1b1b;
+	background-color: white;
+	margin-right: 20px;
+}
+
+.btn-primary:hover {
+	color: white;
+	background-color: #6b1b1b;
+	transition: ease 500ms;
+}
+
+.button-container {
+	margin-top: 40px;
+	margin-bottom: 20px;
+	display: flex;
+	justify-content: center;
+}

@@ -1,25 +1,21 @@
-<div class="banner">
-  <div class="container text-center">
-    <h1>The Cocktail Shaker</h1>
-    <h3>Impress your friends with amazing Cocktails!</h3>
-  </div>
-</div>
 
-<div class="wrapper">
+<div id="wrapper">
+  <div class="card-container">
+    <div class="row">
+      <div id="cocktails">
+        <% @cocktails.each do |cocktail| %>
+          <%= render 'cocktails/show', cocktail: cocktail %>
+        <% end %>
+      </div>
+    </div>
+  </div>
   <div class="button-container text-center">
+    <div>
+      <%= link_to "Home", pages_home_path, class:"btn btn-primary" %>
+    </div> 
     <button type="button" id="cocktail-modal-button" class="btn btn-primary" data-toggle="modal" data-target="cocktail-modal">
       Create a Cocktail
     </button>
-  </div>
-</div>
-
-<div class="card-container">
-  <div class="row">
-    <div id="cocktails">
-      <% @cocktails.each do |cocktail| %>
-        <%= render 'cocktails/show', cocktail: cocktail %>
-      <% end %>
-    </div>
   </div>
 </div>
 
@@ -34,7 +30,3 @@
     });
   <% end %>
 <% end %>
-
-
-
-
